@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const appDiv = document.getElementById("app");
+
+      const mostCommonString = (strings) => {
+        const result = strings.reduce(
+          (acc, str) => {
+            acc[str] ? acc[str]++ : (acc[str] = 1);
+            if (acc[str] > acc.maxChar.value) {
+              acc.maxChar = { char: str, value: acc[str] };
+            }
+            return acc;
+          },
+          { maxChar: { value: 0 } }
+        );
+        return result.maxChar.char;
+      };
+
+      const inputArray = ["a", "c", "b", "b", "c", "b"];
+      const result = mostCommonString(inputArray);
+      appDiv.innerHTML = `<h1>most common character from the array: [${inputArray.toString()}] is ${result}</h1>`;
+    </script>
+  </body>
+</html>
